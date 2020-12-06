@@ -1,8 +1,8 @@
 import fs as pyfs
 import fs.tree
 
-from pyfshash.tools import HashTool, TreeTool
-from pyfshash.utils import param_open_fs
+from pyfstools.tools import HashTool, TreeTool
+from pyfstools.utils import param_open_fs
 
 DEFAULT_LS = False
 DEFAULT_FS_URL = None

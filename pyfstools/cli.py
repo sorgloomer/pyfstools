@@ -1,8 +1,8 @@
 import click
 
-from pyfshash.cmds import cmd_hash, DEFAULT_LS, DEFAULT_FS_URL, cmd_tree, cmd_fstree
-from pyfshash.tools import DEFAULT_ALGO
-from pyfshash.utils import compose_decorators
+from pyfstools.cmds import cmd_hash, DEFAULT_LS, DEFAULT_FS_URL, cmd_tree, cmd_fstree
+from pyfstools.tools import DEFAULT_ALGO
+from pyfstools.utils import compose_decorators
 
 
 @click.group()

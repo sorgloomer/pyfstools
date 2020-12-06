@@ -5,8 +5,8 @@ import hashlib
 import fs as pyfs
 import fs.filesize
 
-from pyfshash.escape import escape_filename
-from pyfshash.utils import param_open_fs, mark_iterable_ends
+from pyfstools.escape import escape_filename
+from pyfstools.utils import param_open_fs, mark_iterable_ends
 
 DEFAULT_ALGO = "sha256"
 
@@ -101,7 +101,7 @@ class HashTool(ToolBase):
     @staticmethod
     def _typeof_info(info):
         if info.is_dir:
-            return "dir "
+            return "dir"
         if info.is_file:
             return "file"
         if info.is_link:
