@@ -47,3 +47,146 @@ printing the tree:
         └── f e3b0c442 text2.txt
 
     3 directories, 2 files
+
+
+Command Line Documentation
+--------------------------
+
+```
+$ python -m pyfstools
+Usage: __main__.py [OPTIONS] COMMAND [ARGS]...
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  fstree  Prints the directory structure using PyFilesystem's...
+  hash    Prints a hash of a given PATH.
+  tree    Prints the directory structure similar to the unix `tree` command.
+
+Tamas@EFREET MINGW64 /c/workspace/personal/pyfstools (main)
+$ python -m pyfstools hash --help
+Usage: __main__.py hash [OPTIONS] [PATH]
+
+  Prints a hash of a given PATH.
+
+  Examples:
+      pyfshash hash
+      pyfshash hash /absolute/path
+      pyfshash hash --ls
+      pyfshash hash --ls -e ".*"
+
+          The PATH parameter can include PyFilesystem2 protocol.
+
+                  Examples for the PATH parameter:
+                      .
+                      relative_dir/subdir
+                      /absolute/path
+                      osfs://relative_dir
+                      osfs:///absolute_dir
+                      gs://bucket_name/path/to/dir
+
+
+Options:
+  -U, --fs-url TEXT   Optional PyFilesystem2 fs_url. This is usually parsed
+                      from the PATH parameter, but can be supplied
+                      directly if
+                      the inference logic fails or is just undesired.
+
+                      Examples:
+                          osfs:///
+                          gs://bucket_name
+  -A, --algo TEXT     Hash algorithm to he used. Examples: md5, sha1, sha256,
+                      sha512. This argument is directly passed to
+                      Pythons
+                      hashlib.new, so it is possible to use system-dependent
+                      algorithms as well.
+  -e, --exclude TEXT  Blacklist pattern for files
+  -i, --include TEXT  Whitelist pattern for files
+  -L, --ls            Print the contents of a directory node. PATH must point
+                      to a directory. Note that the printed content is close
+                      to the bytes that are used for hashing, but might
+                      slightly differ. On Windows the line endings in stdout
+                      might
+                      be changed to \r\n. When pyfstools hashes a
+                      directory internally, it always uses \n, regardless of
+                      platform.
+  --help              Show this message and exit.
+
+
+$ python -m pyfstools tree --help
+Usage: __main__.py tree [OPTIONS] [PATH]
+
+  Prints the directory structure similar to the unix `tree` command.
+
+  Examples:
+      pyfshash tree
+      pyfshash tree dir1/dir2
+      pyfshash tree -f "{type:.1} {hash:.6} {size:>10} {name}" -e "**/.*" -e ".*" -e "**/__pycache__"
+
+          The PATH parameter can include PyFilesystem2 protocol.
+
+                  Examples for the PATH parameter:
+                      .
+                      relative_dir/subdir
+                      /absolute/path
+                      osfs://relative_dir
+                      osfs:///absolute_dir
+                      gs://bucket_name/path/to/dir
+
+
+Options:
+  -U, --fs-url TEXT        Optional PyFilesystem2 fs_url. This is usually
+                           parsed from the PATH parameter, but can be supplied
+                           directly if the inference logic fails or is just
+                           undesired.
+
+                           Examples:
+                               osfs:///
+                           gs://bucket_name
+  -A, --algo TEXT          Hash algorithm to he used. Examples: md5, sha1,
+                           sha256, sha512. This argument is directly passed to
+                           Pythons hashlib.new, so it is possible to use
+                           system-dependent algorithms as well.
+  -e, --exclude TEXT       Blacklist pattern for files
+  -i, --include TEXT       Whitelist pattern for files
+  -d, --max-depth INTEGER  Maximum depth to print. This option does not affect
+                           the hashing algorithm.
+  -f, --format TEXT        A python format string for nodes.
+
+                           Allowed
+                           variables
+                               `{size}` formatted file size
+                           `{bsize}` file size in bytes
+                               `{name}` escaped
+                           filename
+                               `{type}` dir or file
+                               `{hash}` hash
+                           of the node
+
+                           Examples:
+                               `{name}`
+                               `{type:.1}
+                           {hash:.6} {size:>10} {name}`
+  --no-stats               Print the number of shown files and directories.
+  --help                   Show this message and exit.
+
+
+$ python -m pyfstools fstree --help
+Usage: __main__.py fstree [OPTIONS] [PATH]
+
+  Prints the directory structure using PyFilesystem's `fs.tree.render`
+  method.
+
+Options:
+  -U, --fs-url TEXT  Optional PyFilesystem2 fs_url. This is usually parsed
+                     from the PATH parameter, but can be supplied
+                     directly if
+                     the inference logic fails or is just undesired.
+
+                     Examples:
+                         osfs:///
+                         gs://bucket_name
+  --no-stats         Print the number of shown files and directories.
+  --help             Show this message and exit.
+```
