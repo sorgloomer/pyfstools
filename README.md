@@ -4,7 +4,15 @@ pyfstools
 A command line tool to pretty print or deep hash directories. Can be used with
 any PyFilesystem2 url.
 
+
+Installation
+------------
+
+    pip install git+https://github.com/sorgloomer/pyfstools.git@main
+
+
 Usage:
+-----
 
 To get a deep-hash of a directory:
 
