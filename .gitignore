@@ -1,0 +1,8 @@
+/build/
+/dist/
+/pyfstools.egg-info/
+/MANIFEST
+
+__pycache__/
+.idea/
+*.pyc
