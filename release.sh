@@ -11,7 +11,7 @@ python -m pip install --user --upgrade twine
 
 rm -rf dist/
 rm -rf build/
-rm -rf pyfsftpserver.egg-info/
+rm -rf pyfstools.egg-info/
 rm -f MANIFEST
 python setup.py sdist bdist_wheel
 

@@ -20,7 +20,7 @@ def main():
         description='A simple toolset for printing or deep hashing PyFilesystem2 directories.',
         long_description=long_description,
         long_description_content_type="text/markdown",
-        url='https://github.com/sorgloomer/pyfsftpserver',
+        url='https://github.com/sorgloomer/pyfstools',
         packages=setuptools.find_packages(),
         classifiers=[
             'Development Status :: 3 - Alpha',
@@ -37,7 +37,7 @@ def main():
 
 
         license='MIT',
-        download_url='https://github.com/sorgloomer/pyfsftpserver/archive/v0.0.1.tar.gz',
+        download_url='https://github.com/sorgloomer/pyfstools/archive/v0.0.1.tar.gz',
         install_requires=[
             'fs',
         ],
