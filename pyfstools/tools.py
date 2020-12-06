@@ -5,6 +5,7 @@ import hashlib
 import fs as pyfs
 import fs.filesize
 
+from pyfstools.errors import PyfsNotADirectoryError
 from pyfstools.escape import escape_filename
 from pyfstools.utils import param_open_fs, mark_iterable_ends
 
@@ -80,7 +81,7 @@ class HashTool(ToolBase):
         if info.is_dir:
             yield from self.make_tree(path)
         else:
-            yield self.path_hash(path)
+            raise PyfsNotADirectoryError(f"{path!r} is not a directory")
 
     def make_tree(self, dir_path):
         infos = self._scandir(dir_path)

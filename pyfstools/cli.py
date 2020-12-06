@@ -98,10 +98,9 @@ def _command_with_base_tool_args(help):
     is_flag=True,
     default=DEFAULT_LS,
     help="""
-        Toggle to print the contents instead of the hash itself. If PATH points to a file, this flag does nothing.
-        If PATH points to a directory, the contents of the directory node is printed. Note that the printed content
-        closely resembles the bytes that are used for hashing of a directory. On windows systems the line endings in
-        the output of this command might be changed to \\r\\n. On the other hand, \\n is always used for hashing.
+        Print the contents of a directory node. PATH must point to a directory. Note that the printed content is close
+        to the bytes that are used for hashing, but might slightly differ. On Windows the line endings in stdout might
+        be changed to \\r\\n. When pyfstools hashes a directory internally, it always uses \\n, regardless of platform.
     """,
 )
 def hash(path, fs_url, ls, algo, exclude, include):
